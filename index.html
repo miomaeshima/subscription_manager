@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soloproject</title>
+    <title>Subscription Manager</title>
 </head>
 <body>
-    <h1>Soloproject</h1>
-    <ul id="container"></ul>
+    <h1>Subscription Manager</h1>
+    <ul id="container">Current Subcriptions</ul>
+    <form name ="form" id= "addSubscription" action="http://localhost:3000/form" method="post">
+    <input type="date" name="date"><br>
+    <input type="text" name="service_name" placeholder="service name"><br>
+    <input type="text" name="url" placeholder="url"><br>
+    <input type="number" name="price" placeholder="price per year"><br>
+    <input type="text" name="description" placeholder="description"><br> 
+    <input type="submit" id="submit" value="submit">
+    </form>
     <script src="./main.js"></script>
 </body>
 </html>
