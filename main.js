@@ -4,8 +4,9 @@ let container = document.getElementById("container");
 let detailsContainer = document.getElementById("detailsContainer");
 document.create;
 
-//Getting all the service names in the current subsctiptions from the endpoint (which is "/info" here) on server side.
+//(1) Getting all the service names in the current subsctiptions from the endpoint (which is "/info" here) on server side.
 //calling json() is necessary to take the response object from the promise.
+// function (3) is called if line item is clicked.
 fetch("http://localhost:3000/info")
   .then((res) => res.json())
   .then((data) => {
@@ -16,13 +17,11 @@ fetch("http://localhost:3000/info")
     );
   });
 
-//Function to get the full data of the service clicked on the list
+//(3) Function to get the full data of the service clicked on the list
 function showDetails(id) {
   console.log(id);
-  // id is actually the 
-  
-  
-  let fetchData={
+  // id is the service name
+    let fetchData={
     method: "POST",
       headers: {
       Accetpt: "application/json, text/plain, */*",
@@ -32,14 +31,7 @@ function showDetails(id) {
       service_name: id
     })
   }
-  
-
-  // let fetchData = {
-  //   method: "POST",
-  //   body: { service_name: id },
-  //   headers: new Headers(),
-  // };
-
+ 
   fetch("http://localhost:3000/info/details", fetchData)
     .then((res) => res.json())
     .then((data) => {
@@ -54,6 +46,7 @@ function showDetails(id) {
     });
 }
 
+//(2) insert a new service information from form
 let addSubscription = document.getElementById("addSubscription");
 addSubscription.addEventListener("submit", addSubsc);
 

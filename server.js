@@ -20,7 +20,7 @@ const client = new Client({
 });
 client.connect();
 
-//(1) api to get details of a service_name from the table
+//(3) api to get details of a service_name from the table
 app.post("/info/details", async (req, res) => {
   let text = "select*from current_subscriptions where service_name = ($1)";
   console.log(req.body.service_name);
@@ -40,7 +40,7 @@ app.post("/info/details", async (req, res) => {
   res.send(result);
 });
 
-//(2) api to get all the service_names in the table
+//(1) api to get all the service_names in the table
 app.get("/info", async (req, res) => {
   let result = [];
   const data = await client.query(
@@ -54,7 +54,7 @@ app.get("/info", async (req, res) => {
   //await client.end(); ←This stops server??
 });
 
-//(3) api to register a new service info from a form
+//(2) api to insert a new service info from a form
 //    Use a prepared statement/parametarized query
 
 app.post("/form", async (req, res) => {
