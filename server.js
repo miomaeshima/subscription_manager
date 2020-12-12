@@ -21,23 +21,18 @@ const client = new Client({
 client.connect();
 
 //(3) api to get details of a service_name from the table
-app.post("/info/details", async (req, res) => {
+app.get("/info/:service", async (req, res) => {
+  
+  const {service} = req.params;
+  
   let text = "select*from current_subscriptions where service_name = ($1)";
-  console.log(req.body.service_name);
-  let values = [req.body.service_name];
-
-  let result = [];
+  let values = [service];
 
   const data = await client.query(text, values);
 
   let serviceInfo = data.rows[0];
+  res.send(serviceInfo);
 
-  result.push(serviceInfo.date);
-  result.push(serviceInfo.service_name);
-  result.push(serviceInfo.url);
-  result.push(serviceInfo.price_per_year);
-  result.push(serviceInfo.description);
-  res.send(result);
 });
 
 //(1) api to get all the service_names in the table
