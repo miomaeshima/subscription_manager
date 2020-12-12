@@ -9,14 +9,16 @@
 <body>
     <h1>Subscription Manager</h1>
     <ul id="container">Current Subcriptions</ul>
-    <form name ="form" id= "addSubscription" action="http://localhost:3000/form" method="post">
-    <input type="date" name="date"><br>
-    <input type="text" name="service_name" placeholder="service name"><br>
-    <input type="text" name="url" placeholder="url"><br>
-    <input type="number" name="price" placeholder="price per year"><br>
-    <input type="text" name="description" placeholder="description"><br> 
-    <input type="submit" id="submit" value="submit">
-    </form>
+    <div id=formblock>
+        <form name ="form" id= "addSubscription" action="http://localhost:3000/form" method="post">
+            <input class="input" type="date" name="date"><br>
+            <input class="input" type="text" name="service_name" placeholder="service name"><br>
+            <input class="input" type="text" name="url" placeholder="url"><br>
+            <input class="input" type="number" name="price" placeholder="price per year"><br>
+            <input class="input" type="text" name="description" placeholder="description"><br> 
+            <input class="input" type="submit" id="submit" value="submit">
+        </form>
+    </div>
     <div id="detailsContainer"></div>
     <script src="./main.js"></script>
 </body>

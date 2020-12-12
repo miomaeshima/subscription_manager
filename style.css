@@ -1,18 +1,38 @@
+*{
+  box-sizing: border-box;
+}
 body {
-  background-color: azure;
+  background-color: lightblue;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
 }
 #container {
   display: flex;
   flex-direction: column;
 }
 
+#formblock{
+  height:250px;
+  margin-left:40px;
+  width: 290px;
+  background-color:aquamarine;
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.4);
+}
 .lineitem {
-  width: 250px;
+  width: 280px;
   background-color: aquamarine;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.4);
   margin: 10px;
+}
+
+#formblock{
+  padding: 5px;
+  height: 260px;
+}
+.input{
+  width: 200px;
+  padding: 5px 10px;
+  margin: 10px 10px 0px 30px;
 }
 
 .lineitem:active {
@@ -22,13 +42,24 @@ body {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
-#box{
+#detailsOfService {
+  margin-left: 40px;
+  padding-top: 20px;
+  padding-left: 40px;
   height: 150px;
-  width: 250px;
+  width: 290px;
   background-color: aquamarine;
   box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.4);
 }
 
-.detail{
-  margin:10px
+#editData{
+  height: 20px;
+  width: 50px;
+  margin: 5px;
+}
+
+#deleteData{
+  height: 20px;
+  width: 50px;
+  margin: 5px;
 }

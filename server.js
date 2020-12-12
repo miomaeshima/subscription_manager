@@ -5,7 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 //import node-progress(pg)
-const { Client } = require("pg");
+const { Client, Pool } = require("pg");
 const app = express();
 
 //making extended as true, you can get the response in a form of an array
@@ -20,11 +20,20 @@ const client = new Client({
 });
 client.connect();
 
+//(4) api to delete a service
+app.delete("/info/:id", async(req, res)=>{
+  try{
+    const {id} = req.params;
+    await client.query("delete from current_subscriptions where id = $1", [id])
+   res.json("Service was deleted.");
+  } catch(err){
+    console.error(err.message);
+  }
+}) 
+
 //(3) api to get details of a service_name from the table
 app.get("/info/:service", async (req, res) => {
-  
   const {service} = req.params;
-  
   let text = "select*from current_subscriptions where service_name = ($1)";
   let values = [service];
 
@@ -63,8 +72,7 @@ app.post("/form", async (req, res) => {
       req.body.price,
       req.body.description,
     ]);
-    console.log(data);
-  } catch (err) {
+    } catch (err) {
     console.log(err.stack);
   }
 });
