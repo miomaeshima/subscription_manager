@@ -25,7 +25,7 @@ app.put("/info/update/:id", async(req,res)=>{
   
   let text= "update current_subscriptions set date=$1, service_name=$2, url=$3, price_per_year=$4, description=$5 where id = $6";
   const {id} = req.params;
-   
+    
   try{
     await client.query(text, [
       req.body.date,
@@ -43,7 +43,7 @@ app.put("/info/update/:id", async(req,res)=>{
 }})
 
 //(4) api to delete a service
-app.delete("/info/:id", async(req, res)=>{
+app.delete("/info/delete/:id", async(req, res)=>{
   try{
     const {id} = req.params;
     await client.query("delete from current_subscriptions where id = $1", [id])

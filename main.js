@@ -24,45 +24,45 @@ const editInfo = async (e) => {
   <button id="cancelButton" type="button" >Cancel</button>
   <button id="updateButton" type="submit">Update</button>`;
 
-  function cancel() {
-    document.getElementById("details").remove();
-  }
+  function cancel(){document.getElementById("details")
+  .remove()};
   document.getElementById("cancelButton").addEventListener("click", cancel);
 
-  document
-    .getElementById("updateButton")
-    .addEventListener("click", updateSubsc);
+  document.getElementById("updateButton").addEventListener("click", updateSubsc);
 
-  function updateSubsc(e) {
-    e.preventDefault();
-    let date = document.getElementById("newDate").value;
-    let service_name = document.getElementById("newServiceName").value;
-    let url = document.getElementById("newUrl").value;
-    let price = document.getElementById("newPrice").value;
-    let description = document.getElementById("newDescription").value;
+ function updateSubsc(e) {
+   e.preventDefault();
+  let date = document.getElementById("newDate").value;
+  let service_name = document.getElementById("newServiceName").value;
+  let url = document.getElementById("newUrl").value;
+  let price = document.getElementById("newPrice").value;
+  let description = document.getElementById("newDescription").value;
 
-    fetch(`http://localhost:3000/info/update/${data.id}`, {
-      method: "PUT",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify({
-        date: date,
-        service_name: service_name,
-        url: url,
-        price: price,
-        description: description,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }
+ fetch(`http://localhost:3000/info/update/${data.id}`, {
+    method: "PUT",
+    headers: {"Content-type": "application/json"},
+    body: JSON.stringify({
+      date: date,
+      service_name: service_name,
+      url: url,
+      price: price,
+      description: description,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+  
+  };
+
 };
+
 
 //(4) delete by clicking on a button on details
 const deleteInfo = async (e) => {
   e.preventDefault();
   const id = e.target.number;
   try {
-    await fetch(`http://localhost:3000/info/${id}`, {
+    await fetch(`http://localhost:3000/info/delete/${id}`, {
       method: "DELETE",
     });
   } catch (err) {
@@ -82,9 +82,7 @@ function showDetails(service) {
       let detailsOfService = document.createElement("div");
       detailsOfService.id = `detailsOf${data.id}`;
 
-      detailsOfService.innerHTML = `<h4>Update information</h4><p>Date: ${
-        data.date.split("T", 1)[0]
-      }</p>
+      detailsOfService.innerHTML = `<h4>Update information</h4><p>Date: ${data.date.split("T", 1)[0]}</p>
          <p>Service name: ${data.service_name}</p>
          <p>Url: ${data.url}</p>
          <p>Price per year: ${data.price_per_year}</p>
@@ -103,13 +101,15 @@ function showDetails(service) {
       deleteData.addEventListener("click", deleteInfo);
 
       let closeData = document.createElement("button");
-      closeData.id = "closeData";
+      closeData.id = "closeData"
       closeData.innerText = "Close";
       closeData.addEventListener("click", closeDetails);
 
-      function closeDetails() {
-        document.getElementById("details").remove();
+      function closeDetails(){
+        document.getElementById("details").remove()
       }
+
+
 
       detailsOfService.append(editData);
       detailsOfService.append(deleteData);
